@@ -16,31 +16,29 @@ pragma solidity 0.8.18;
 */
 
 contract MyToken {
-    // public variables here
+    
 
-    string public Token_name = "LITCOIN"; // a string variable to store my token_name
-    string public Token_abbrv = "LTC"; //  another string variable to store my token_abbrv
-    uint256 public Total_supply = 0; // and unint varibale which usigned int
+    string public name_of_token = "shiba_inu"; 
+    string public token_short = "SHIB"; 
+    uint256 public Supply_total = 0;
 
-    // mapping variable here
+   
 
-    mapping(address => uint256) public Tot_amount;
+    mapping(address => uint256) public tot_amount;
 
-    // mint function
+    
 
-    function mint(address Address, uint256 value) public payable  {
-        Total_supply += value; // adding the value of the variable value to the my Total Supply
-        Tot_amount[Address] += value; // and accessing the value through the given address and using it to add the value of the total value
+    function mint(address Address, uint256 amount) public payable  {
+        Supply_total += amount; 
+        tot_amount[Address] += amount; 
     }
 
-    // burn function
-
-    function burn(address Address, uint256 value) public payable {
-        // the balance or the total amount of the sender should be greater than or equal to the amount that is supposed to be burned.
-
-        if (Tot_amount[Address] >= value) {
-            Total_supply -= value; // deducting the value of the variable value to the my Total Supply
-            Tot_amount[Address] -= value; // and accessing the value through the given address and using it to subtracting the value of the total value
+  
+    function burn(address Address, uint256 amount) public payable {
+        
+        if (tot_amount[Address] >= amount) {
+            Supply_total -= amount; 
+            tot_amount[Address] -= amount; 
         }
     }
 }
